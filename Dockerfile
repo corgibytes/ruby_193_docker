@@ -9,4 +9,3 @@ RUN apt-get update -qq && apt-get install -y build-essential
 RUN gem install rubygems-update -v 2.7.8
 RUN update_rubygems
 RUN gem install bundler -v 1.17.3
-RUN bundle install
