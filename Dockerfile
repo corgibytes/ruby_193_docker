@@ -1,6 +1,14 @@
 FROM ruby:1.9.3
 
-# Install stuff
+# The Debian Jessie APT packages have been archived.  Update where to
+# find the packages.  If you don't do this you will get an error message
+# like:
+#
+#  W: Failed to fetch http://http.debian.net/debian/dists/jessie-updates/InRelease
+#
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
+# Install stuff.  Currently just the build essentials.
 RUN apt-get update -qq && apt-get install -y build-essential
 
 # Install Gems.  Use Bundler 1.17.3 as 2+ does not work with
