@@ -4,7 +4,15 @@ A Docker image that contains the latest versions of [RubyGems](https://github.co
 ```dockerfile
 FROM ruby:1.9.3
 
-# Install stuff
+# The Debian Jessie APT packages have been archived.  Update where to
+# find the packages.  If you don't do this you will get an error message
+# like:
+#
+#  W: Failed to fetch http://http.debian.net/debian/dists/jessie-updates/InRelease
+#
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
+# Install stuff.  Currently just the build essentials.
 RUN apt-get update -qq && apt-get install -y build-essential
 
 # Working folder.
@@ -24,7 +32,7 @@ RUN bundle install
 The files now look like:
 
 ```dockerfile
-FROM corigbytes/ruby-1.9.3:1.0.0`
+FROM corigbytes/ruby-1.9.3:1.0.1
 
 # Working folder.
 RUN mkdir /app
