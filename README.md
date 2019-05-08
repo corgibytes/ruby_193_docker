@@ -108,6 +108,13 @@ The tagged versions are stable where as the latest version is not guaranteed to 
 
 You can find a full list of the built tags on [DockerHub](https://hub.docker.com/r/corgibytes/ruby-1.9.3/tags).
 
+# Testing the Image
+When making changes to the image you can test you changes by running the following command in the root of the repository:
+
+```bash
+docker build .
+```
+
 # Contributing
 If you have any questions, notice a bug, or have a suggestion/enhancment please let me know by opening [issue](https://github.com/corgibytes/ruby_193_docker/issues) or [pull request](https://github.com/corgibytes/ruby_193_docker/pulls).
 
