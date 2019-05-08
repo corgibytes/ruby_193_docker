@@ -4,7 +4,15 @@ A Docker image that contains the latest versions of [RubyGems](https://github.co
 ```dockerfile
 FROM ruby:1.9.3
 
-# Install stuff
+# The Debian Jessie APT packages have been archived.  Update where to
+# find the packages.  If you don't do this you will get an error message
+# like:
+#
+#  W: Failed to fetch http://http.debian.net/debian/dists/jessie-updates/InRelease
+#
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
+# Install stuff.  Currently just the build essentials.
 RUN apt-get update -qq && apt-get install -y build-essential
 
 # Working folder.
@@ -24,7 +32,7 @@ RUN bundle install
 The files now look like:
 
 ```dockerfile
-FROM corigbytes/ruby-1.9.3:1.0.0`
+FROM corigbytes/ruby-1.9.3:1.0.1
 
 # Working folder.
 RUN mkdir /app
@@ -107,6 +115,13 @@ This image is setup using DockerHub's automate builds.  It will build on every c
 The tagged versions are stable where as the latest version is not guaranteed to be stable.
 
 You can find a full list of the built tags on [DockerHub](https://hub.docker.com/r/corgibytes/ruby-1.9.3/tags).
+
+# Testing the Image
+When making changes to the image you can test you changes by running the following command in the root of the repository:
+
+```bash
+docker build .
+```
 
 # Contributing
 If you have any questions, notice a bug, or have a suggestion/enhancment please let me know by opening [issue](https://github.com/corgibytes/ruby_193_docker/issues) or [pull request](https://github.com/corgibytes/ruby_193_docker/pulls).
