@@ -32,7 +32,7 @@ RUN bundle install
 The files now look like:
 
 ```dockerfile
-FROM corigbytes/ruby-1.9.3:1.0.1
+FROM corgibytes/ruby-1.9.3:1.0.1
 
 # Working folder.
 RUN mkdir /app
@@ -60,7 +60,7 @@ Example Dockerfile and Compose to run a Rails app that uses Ruby 1.9.3:
 
 ```dockerfile
 # Dockerfile
-FROM corigbytes/ruby-1.9.3:1.0.0`
+FROM corgibytes/ruby-1.9.3:1.0.0`
 
 # Working folder.
 RUN mkdir /app
