@@ -81,7 +81,7 @@ services:
     entrypoint: ./docker-entrypoint.sh
     volumes:
       - .:/app
-      - bunlder-data:/user/local/bundle
+      - bundler-data:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
