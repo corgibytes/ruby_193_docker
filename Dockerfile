@@ -8,8 +8,9 @@ FROM ruby:1.9.3
 #
 RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
 
-# Install stuff.  Currently just the build essentials.
-RUN apt-get update -qq && apt-get install -y build-essential
+# Install the build essentials for building gems and the updated certificates
+# to prevent "certificate verify failed" errors.
+RUN apt-get update -qq && apt-get install -y build-essential ca-certificates
 
 # Install Gems.  Use Bundler 1.17.3 as 2+ does not work with
 # Ruby 1.9.3.  Also update the rubygems to prevent frozen string
