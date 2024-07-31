@@ -6,7 +6,9 @@ FROM ruby:1.9.3
 #
 #  W: Failed to fetch http://http.debian.net/debian/dists/jessie-updates/InRelease
 #
-RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+RUN rm /etc/apt/sources.list
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" >> /etc/apt/sources.list.d/jessie.list
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list.d/jessie.list
 
 # Install the build essentials for building gems and the updated certificates
 # to prevent "certificate verify failed" errors.
